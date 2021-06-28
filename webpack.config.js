@@ -3,7 +3,8 @@ module.exports = {
   entry: './src/index.js',
   devServer: {
     contentBase: './dist',
-    hot: true
+    hot: true,
+    historyApiFallback: true
   },
   module: {
     rules: [
@@ -24,6 +25,7 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: `${__dirname}/dist`
+    path: `${__dirname}/dist`,
+    publicPath: '/'
   }
 }
