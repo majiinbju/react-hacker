@@ -9,7 +9,9 @@ import About from '../pages/About'
 const App = () => (
   <Router>
     <Global styles={GlobalCSS} />
+
     <Nav />
+
     <Switch>
       <Route path="/about">
         <About />
