@@ -1,21 +1,25 @@
 import React from 'react'
 import { Global, css, jsx } from '@emotion/react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-// delete me
-import reactLogo from '../img/react.png'
+import Nav from './Nav'
+import Home from '../pages/Home'
+import About from '../pages/About'
 
-/**
- * @function App
- */
 const App = () => (
-  <>
+  <Router>
     <Global styles={GlobalCSS} />
+    <Nav />
+    <Switch>
+      <Route path="/about">
+        <About />
+      </Route>
 
-    {/* Delete me, the default .app styles in GlobalCSS, and the reactLogo img import */}
-    <img src={reactLogo} />
-    <h1>Hello Moto.</h1>
-    {/*  */}
-  </>
+      <Route path="/">
+        <Home />
+      </Route>
+    </Switch>
+  </Router>
 )
 
 const GlobalCSS = css`
@@ -31,20 +35,6 @@ const GlobalCSS = css`
     height: 100%;
     width: 100%;
   }
-
-  // Just to position the react logo on initial startup. Delete this block.
-  .app {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: #282c34;
-
-    h1 {
-      color: white;
-    }
-  }
-  //
 
   a {
     text-decoration: none;
