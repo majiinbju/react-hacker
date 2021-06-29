@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { css, jsx } from '@emotion/react'
+import { jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
 
@@ -15,7 +15,7 @@ const ListItem = styled.li`
 
 const Nav = () => {
   return (
-    <nav className="Nav" css={CSS}>
+    <nav className="Nav">
       <ul>
         <ListItem>
           <Link to="/">Home</Link>
@@ -29,17 +29,17 @@ const Nav = () => {
   )
 }
 
-const CSS = css`
-  position: absolute;
-  top: 25px;
-  right: 25px;
+// const CSS = css`
+//   position: absolute;
+//   top: 25px;
+//   right: 25px;
 
-  ul {
-    display: flex;
-    a {
-      color: white;
-    }
-  }
-`
+//   ul {
+//     display: flex;
+//     a {
+//       color: white;
+//     }
+//   }
+// `
 
 export default Nav

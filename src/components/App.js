@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { Global, css, jsx } from '@emotion/react'
+import React from 'react'
+import { Global, css } from '@emotion/react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Nav from './Nav'

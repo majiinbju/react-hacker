@@ -20,7 +20,7 @@ This package includes the following:
 
 ## Usage
 
-The starter consists of a simple two page template to demonstrate that everything is hooked up and working properly. There are examples of how to use Emotion CSS in various ways in the code, and an example of how to use the file loader to import an image on the Home page.
+The starter consists of a simple two page template to demonstrate that everything is working properly. There are examples of how to use Emotion CSS in various ways in the code, and an example of how to use the file loader to import an image on the Home page. Please read the additional notes in the next section before using.
 
 - `git clone https://github.com/DZuz14/react-hacker.git`
 - `cd react-hacker`
@@ -31,14 +31,39 @@ If your browser does not automatically open, visit `http://localhost:8080`.
 
 ## Notes
 
-You don't need to import React anymore like this:
+For the most part, if you plan to use Emotion, you do not need to import React like this:
 
 - `import React from 'react'`
 
-Reason being is that this uses JSX pragma, which handles that for us. The top of any new React related file that you create should look like this:
+The reason being is that this uses [JSX Pragma](https://www.gatsbyjs.com/blog/2019-08-02-what-is-jsx-pragma/), which handles that for us. Most of the time, the top of any new React related file that you create should look like the following.
 
 ```
 /** @jsx jsx */
-import { useState } from 'react'
 import { css, jsx } from '@emotion/react'
 ```
+
+or this if you are using styled components.
+
+```
+/** @jsx jsx */
+import { jsx } from '@emotion/react'
+import styled from '@emotion/styled'
+```
+
+or this if you are using both the css prop and styled components together.
+
+```
+/** @jsx jsx */
+import { css, jsx } from '@emotion/react'
+import styled from '@emotion/styled'
+```
+
+If you need to import hooks and anything else from React, you need to do it like this:
+
+```
+import { useState, useEffect, useRef } from 'react'
+```
+
+If you have a React file that you don't want to use Emotion in, you can simply import React like usual. There is no need to have the `/**@jsx jsx */` at the top, or any imports related to Emotion, just:
+
+- `import React from 'react'`
