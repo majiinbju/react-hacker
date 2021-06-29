@@ -28,3 +28,17 @@ The starter consists of a simple two page template to demonstrate that everythin
 - `npm start` or `yarn start`
 
 If your browser does not automatically open, visit `http://localhost:8080`.
+
+## Notes
+
+You don't need to import React anymore like this:
+
+- `import React from 'react'`
+
+Reason being is that this uses JSX pragma, which handles that for us. The top of any new React related file that you create should look like this:
+
+```
+/** @jsx jsx */
+import { useState } from 'react'
+import { css, jsx } from '@emotion/react'
+```

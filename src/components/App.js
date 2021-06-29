@@ -1,4 +1,4 @@
-import React from 'react'
+/** @jsx jsx */
 import { Global, css, jsx } from '@emotion/react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 

@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from 'react'
 import { css, jsx } from '@emotion/react'
 
 const Replace = () => {
@@ -10,7 +9,6 @@ const Replace = () => {
   )
 }
 
-const CSS = css`
-`
+const CSS = css``
 
 export default Replace
