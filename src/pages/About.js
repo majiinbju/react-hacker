@@ -6,7 +6,18 @@ const About = () => {
   return (
     <div className="About" css={CSS}>
       <h1 className="display-1">About Me</h1>
-      <p>
+
+      {/* You can also use the css prop directly on elements. So basically you have a few ways of styling,
+          The css prop outside of the component, css prop directly on any element, and using the @emotion/styled
+          library. For an example of the @emotion/styled way of styling, check the Nav component.
+      */}
+      <p
+        css={css`
+          max-width: 600px;
+          margin: 0 auto;
+          color: white;
+        `}
+      >
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -25,12 +36,6 @@ const CSS = css`
   background: #282c34;
 
   h1 {
-    color: white;
-  }
-
-  p {
-    max-width: 600px;
-    margin: 0 auto;
     color: white;
   }
 `

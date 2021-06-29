@@ -1,19 +1,30 @@
 /** @jsx jsx */
 import React from 'react'
 import { css, jsx } from '@emotion/react'
+import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
+
+/**
+ * This is just a example to show you how you can create components with this type of syntax as well.
+ * You have flexibility and don't just have to use the css prop all the time.
+ */
+const ListItem = styled.li`
+  &:first-child {
+    margin-right: 15px;
+  }
+`
 
 const Nav = () => {
   return (
     <nav className="Nav" css={CSS}>
       <ul>
-        <li>
+        <ListItem>
           <Link to="/">Home</Link>
-        </li>
+        </ListItem>
 
-        <li>
+        <ListItem>
           <Link to="/about">About</Link>
-        </li>
+        </ListItem>
       </ul>
     </nav>
   )
@@ -26,11 +37,6 @@ const CSS = css`
 
   ul {
     display: flex;
-
-    li:first-child {
-      margin-right: 15px;
-    }
-
     a {
       color: white;
     }
