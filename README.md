@@ -14,7 +14,7 @@ This package includes the following:
 - [React Router](https://reactrouter.com/web/guides/quick-start)
 - [Lodash](https://lodash.com/docs/4.17.15)
 - [Axios](https://axios-http.com/docs/intro)
-- [ESint](https://www.npmjs.com/package/eslint-config-airbnb)
+- [ESlint](https://www.npmjs.com/package/eslint-config-airbnb)
 - [Airbnb ESlint Config](https://www.npmjs.com/package/eslint-config-airbnb)
 - [Prettier](https://prettier.io/docs/en/index.html)
 
