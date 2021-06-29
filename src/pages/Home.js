@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { css, jsx } from '@emotion/react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <div className="Home" css={CSS}>
-      <img src={reactLogo} />
+      <img src={reactLogo} alt="react" />
 
       <Button variant="warning" onClick={handleShow}>
         Click Me
@@ -25,10 +25,11 @@ const Home = () => {
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Woohoo, you're reading this text in a modal!</p>
+          <p>Woohoo, you are reading this text in a modal!</p>
 
           <p>
-            Here is an example of a Font Awesome Icon:{' '}
+            Here is an example of a Font Awesome Icon:
+            <br />
             <i className="fa fa-2x fa-handshake-o" aria-hidden="true" />
           </p>
         </Modal.Body>
