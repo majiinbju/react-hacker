@@ -2,21 +2,13 @@ import React from 'react'
 import { Global, css } from '@emotion/react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Nav from './Nav'
 import Home from '../pages/Home'
-import About from '../pages/About'
 
 const App = () => (
   <Router>
     <Global styles={GlobalCSS} />
 
-    <Nav />
-
     <Switch>
-      <Route path="/about">
-        <About />
-      </Route>
-
       <Route path="/">
         <Home />
       </Route>
