@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react'
-import reactLogo from '../img/react.png'
 
 const Home = () => {
   return (
     <div className="Home" css={CSS}>
-      <img src={reactLogo} alt="react" />
+      <h1>Hello</h1>
     </div>
   )
 }
@@ -17,6 +16,10 @@ const CSS = css`
   justify-content: center;
   flex-direction: column;
   background: #282c34;
+
+  h1 {
+    color: white;
+  }
 `
 
 export default Home

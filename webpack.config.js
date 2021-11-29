@@ -1,3 +1,6 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
@@ -6,6 +9,12 @@ module.exports = {
     hot: true,
     historyApiFallback: true
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    new ReactRefreshWebpackPlugin()
+  ],
   module: {
     rules: [
       {
@@ -14,12 +23,16 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: ['@babel/transform-runtime']
+          plugins: ['@babel/transform-runtime', 'react-refresh/babel']
         }
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: ['file-loader']
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
