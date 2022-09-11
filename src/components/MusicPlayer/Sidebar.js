@@ -1,45 +1,87 @@
 /** @jsx jsx */
-import React, {useState} from 'react'
+import React, { useState, useRef } from 'react'
 import { css, jsx } from '@emotion/react'
+import Modal from './Modal'
+import Toast from './Toast'
 import logo from '../../img/logo.png'
 
+/**
+ * @function Sidebar
+ */
 const Sidebar = () => {
   const [state, setState] = useState({
     currentPlaylist: 'home',
+    modal: false,
     playlists: {
-      home: null,
-      favorites: null,
-    }
+      home: new Set(),
+      favorites: new Set()
+    },
+    toast: ''
   })
 
+  const playlistRef = useRef(null)
   const playlists = Object.keys(state.playlists)
+
+  const addPlaylist = e => {
+    e.preventDefault()
+    const list = playlistRef.current.value
+
+    setState({
+      ...state,
+      modal: false,
+      playlists: { ...state.playlists, [list]: new Set() },
+      toast: 'Your playlist was created successfully!'
+    })
+  }
+
+  const handleModal = () => setState({ ...state, modal: !state.modal })
 
   return (
     <ul className="Sidebar" css={CSS}>
-        <img src={logo} />
+      <img src={logo} />
 
-        <li className="library">Library</li>
+      <li className="library">Library</li>
 
-        {
-          playlists.map(list => (
-            /* if the current list item has a state of currentPlaylist, add the class active, else add nothing */
-            <li 
-              key={list}
-              className={list === state.currentPlaylist ? 'active': ''}
-              // onClick updates the current state of the list item 
-              onClick={() => {
-                setState({...state, currentPlaylist: list})
-              }}
-              >
-              {list}
-              </li>
-          ))
-        }
-
-        <li className="new-playlist">
-          <i className="fa fa-plus-circle" />
-          <span>New Playlist</span>
+      {playlists.map(list => (
+        <li
+          key={list}
+          className={list === state.currentPlaylist ? 'active' : ''}
+          onClick={() => {
+            setState({ ...state, currentPlaylist: list })
+          }}
+        >
+          {list}
         </li>
+      ))}
+
+      <li className="new-playlist" onClick={handleModal}>
+        <i className="fa fa-plus-circle" />
+        <span>New Playlist</span>
+      </li>
+
+      <Modal show={state.modal} close={handleModal}>
+        <form onSubmit={addPlaylist}>
+          <div className="title">New Playlist</div>
+
+          <div className="content-wrap">
+            <input
+              type="text"
+              placeholder="My Playlist"
+              ref={playlistRef}
+              required
+            />
+            <br />
+            <button type="submit">Create</button>
+          </div>
+        </form>
+      </Modal>
+
+      <Toast
+        toast={state.toast}
+        close={() => {
+          setState({ ...state, toast: '' })
+        }}
+      />
     </ul>
   )
 }
@@ -49,13 +91,11 @@ const CSS = css`
   height: 100%;
   background: #000000;
   padding-top: 20px;
-
   img {
     height: 60px;
     padding-left: 20px;
     margin-bottom: 20px;
   }
-
   li {
     padding-left: 20px;
     text-transform: capitalize;
@@ -63,38 +103,60 @@ const CSS = css`
     cursor: pointer;
     font-weight: bold;
   }
-
   li.active {
     border-left: 2px solid white;
     padding-left: 18px;
   }
-
   li.library {
     cursor: unset;
-    font-weight: 300;
+    color: #999;
     text-transform: uppercase;
-    color: gray;
+    font-weight: normal;
   }
-
   li.new-playlist {
     position: absolute;
     bottom: 80px;
-
     i {
-      margin-right: 10px;
+      margin-right: 5px;
       transform: translateY(1px);
-
       &:before {
-        color: gray;
         font-size: 20px;
       }
     }
-
     span {
-      color: gray;
+      color: #999;
       font-weight: 300;
     }
-
+  }
+  form {
+    button {
+      background-color: #2bcc6c;
+      color: white;
+      padding: 12.5px 30px;
+      border-radius: 25px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 13px;
+      border: none;
+      cursor: pointer;
+    }
+    .title {
+      margin: 0;
+      margin-bottom: 35px;
+    }
+    input {
+      margin-bottom: 20px;
+      height: 35px;
+      padding-left: 8px;
+      font-size: 16px;
+      width: 100%;
+      color: black;
+    }
+    .content-wrap {
+      margin: 0px auto;
+      max-width: 250px;
+      text-align: center;
+    }
   }
 `
 
