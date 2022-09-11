@@ -4,7 +4,6 @@ import { css, jsx } from '@emotion/react'
 const Home = () => {
   return (
     <div className="Home" css={CSS}>
-      <h1>Hello</h1>
     </div>
   )
 }

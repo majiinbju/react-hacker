@@ -2,7 +2,7 @@ import React from 'react'
 import { Global, css } from '@emotion/react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Home from '../pages/Home'
+import MusicPlayer from './MusicPlayer'
 
 const App = () => (
   <Router>
@@ -10,7 +10,7 @@ const App = () => (
 
     <Switch>
       <Route path="/">
-        <Home />
+        <MusicPlayer />
       </Route>
     </Switch>
   </Router>
@@ -19,7 +19,7 @@ const App = () => (
 const GlobalCSS = css`
   * {
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: Helvetica, Arial;
   }
 
   html,
